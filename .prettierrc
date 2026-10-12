@@ -1,0 +1,11 @@
+{
+  "trailingComma": "none",
+  "semi": false,
+  "bracketSpacing": true,
+  "singleQuote": true,
+  "bracketSameLine": true,
+  "arrowParens": "avoid",
+  "plugins": [
+    "prettier-plugin-markdown-html"
+  ]
+}
