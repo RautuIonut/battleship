@@ -21,7 +21,7 @@ class Gameboard {
       return 'You can\'t place more ships.'
     }
 
-    const ship = new Ship(Math.floor((Math.random() * 4) + 2))
+    const ship = new Ship(Math.floor((Math.random() * 4) + 2), x, y)
 
     for (let i = 0; i < ship.length; i++) {
       if (this.#tiles[x][y - i] !== 0) {
