@@ -53,8 +53,73 @@ test('getShip gets the right ship', () => {
   board.placeShip(1, 6)
   board.placeShip(3, 9)
 
-  expect(board.getShip(8, 3)).toBe(0)
-  expect(board.getShip(1, 5)).toBe(1)
-  expect(board.getShip(3, 8)).toBe(2)
-  expect(board.getShip(2, 7)).toBeUndefined()
+  expect(board.getShipId(8, 3)).toBe(0)
+  expect(board.getShipId(1, 5)).toBe(1)
+  expect(board.getShipId(3, 8)).toBe(2)
+  expect(board.getShipId(2, 7)).toBeUndefined()
+})
+
+test('recieveAttack works', () => {
+  const board = new Gameboard()
+
+  board.placeShip(8, 4)
+  board.placeShip(1, 6)
+
+  board.recieveAttack(1, 6)
+  board.recieveAttack(1, 5)
+  board.recieveAttack(1, 4)
+  board.recieveAttack(1, 3)
+  board.recieveAttack(1, 2)
+
+  expect(board.recieveAttack(5, 6)).toBe('miss')
+  expect(board.recieveAttack(8, 3)).toBe('hit')
+  expect(board.recieveAttack(8, 3)).toBeUndefined()
+  expect(board.getShip(8, 4).isSunk()).toBe(false)
+})
+
+test('Records missed shots properly', () => {
+  const board = new Gameboard()
+
+  board.recieveAttack(8, 4)
+  board.recieveAttack(1, 5)
+  board.recieveAttack(1, 2)
+
+  expect(board.getMissed()).toBe(3)
+})
+
+test('Sunken ships get romoved', () => {
+  const board = new Gameboard()
+
+  board.placeShip(1, 6)
+  board.placeShip(8, 4)
+
+  board.recieveAttack(1, 6)
+  board.recieveAttack(1, 5)
+  board.recieveAttack(1, 4)
+  board.recieveAttack(1, 3)
+  board.recieveAttack(1, 2)
+
+  expect(board.getShips()).toBe(1)
+})
+
+test('Report on wether all ships have been sunk', () => {
+  const board = new Gameboard()
+
+  board.placeShip(1, 6)
+  board.placeShip(8, 4)
+
+  expect(board.getReport()).toBe(false)
+
+  board.recieveAttack(1, 6)
+  board.recieveAttack(1, 5)
+  board.recieveAttack(1, 4)
+  board.recieveAttack(1, 3)
+  board.recieveAttack(1, 2)
+  board.recieveAttack(8, 4)
+  board.recieveAttack(8, 3)
+  board.recieveAttack(8, 2)
+  board.recieveAttack(8, 1)
+  board.recieveAttack(8, 0)
+
+  expect(board.getReport()).toBe(true)
 })
