@@ -1,4 +1,4 @@
-import Gameboard from '../src/gameboard.js'
+import Gameboard from '../src/logic/gameboard.js'
 
 test('placeShip adds ships to the #ships array', () => {
   const board = new Gameboard()

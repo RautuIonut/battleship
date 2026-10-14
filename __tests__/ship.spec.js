@@ -1,4 +1,4 @@
-import Ship from '../src/ship.js'
+import Ship from '../src/logic/ship.js'
 
 test('Ship of length 3 sinks after 3 hits', () => {
   const threeTileShip = new Ship(3)

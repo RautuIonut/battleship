@@ -1,4 +1,4 @@
-import Player from '../src/player.js'
+import Player from '../src/logic/player.js'
 
 test('Player gets name', () => {
   const player1 = new Player('John', 'real')
