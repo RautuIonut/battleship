@@ -1,8 +1,8 @@
 class Ship {
-  constructor(length, start, end) {
+  constructor(length, x, y) {
     this.length = length
-    this.start = start
-    this.end = end
+    this.x = x
+    this.y = y
   }
 
   #hits = 0

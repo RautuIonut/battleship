@@ -45,3 +45,16 @@ test('Cant place ships if there is no empty space', () => {
   expect(board.placeShip(8, 5)).toBe('You can\'t place a ship there')
   expect(board.getShips()).toBe(3)
 })
+
+test('getShip gets the right ship', () => {
+  const board = new Gameboard()
+
+  board.placeShip(8, 4)
+  board.placeShip(1, 6)
+  board.placeShip(3, 9)
+
+  expect(board.getShip(8, 3)).toBe(0)
+  expect(board.getShip(1, 5)).toBe(1)
+  expect(board.getShip(3, 8)).toBe(2)
+  expect(board.getShip(2, 7)).toBeUndefined()
+})

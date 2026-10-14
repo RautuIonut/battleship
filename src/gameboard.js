@@ -40,6 +40,16 @@ class Gameboard {
     return this.#ships.length
   }
 
+  getShip(x, y) {
+    for (let ship of this.#ships) {
+      if (
+        ship.x === x &&
+        y > ship.y - ship.length &&
+        y <= ship.y
+      ) return this.#ships.indexOf(ship)
+    }
+  }
+
   getTile(x, y) {
     return this.#tiles[x][y]
   }
