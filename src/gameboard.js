@@ -18,6 +18,12 @@ class Gameboard {
 
   #missed = 0
 
+  #removeShip(x, y) {
+    if (this.getShip(x, y).isSunk()) {
+      this.#ships.splice(this.getShipId(x, y), 1)
+    }
+  }
+
   placeShip(x, y) {
     if (this.#ships.length >= 5) {
       return 'You can\'t place more ships.'
@@ -27,7 +33,7 @@ class Gameboard {
 
     for (let i = 0; i < ship.length; i++) {
       if (this.#tiles[x][y - i] !== 0) {
-        return 'You can\'t place a ship there'
+        return 'You can\'t place a ship there.'
       }
     }
 
@@ -56,10 +62,6 @@ class Gameboard {
     return this.#ships[this.getShipId(x, y)]
   }
 
-  getTile(x, y) {
-    return this.#tiles[x][y]
-  }
-
   getMissed() {
     return this.#missed
   }
@@ -76,12 +78,6 @@ class Gameboard {
         this.getShip(x, y).hit()
         this.#removeShip(x, y)
         return 'hit'
-    }
-  }
-
-  #removeShip(x, y) {
-    if (this.getShip(x, y).isSunk()) {
-      this.#ships.splice(this.getShipId(x, y), 1)
     }
   }
 
