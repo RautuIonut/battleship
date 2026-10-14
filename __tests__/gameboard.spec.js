@@ -111,3 +111,11 @@ test('Report on wether all ships have been sunk', () => {
 
   expect(board.getReport()).toBe(true)
 })
+
+test('Can place random ships', () => {
+  const board = new Gameboard()
+
+  board.placeRandomShips()
+
+  expect(board.getShips()).toBe(5)
+})

@@ -84,10 +84,15 @@ class Gameboard {
   getReport() {
     return this.#ships.length === 0
   }
-}
 
-const board = new Gameboard()
-board.placeShip(8, 4)
-console.log(board.getShip(8, 4).isSunk())
+  placeRandomShips() {
+    while (this.#ships.length < 5) {
+      this.placeShip(
+        Math.floor(Math.random() * 10 + 1),
+        Math.floor(Math.random() * 10 + 1)
+      )
+    }
+  }
+}
 
 export default Gameboard
