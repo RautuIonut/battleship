@@ -24,6 +24,10 @@ class Gameboard {
     }
   }
 
+  getTile(x, y) {
+    return this.#tiles[x][y]
+  }
+
   placeShip(x, y) {
     if (this.#ships.length >= 5) {
       return 'You can\'t place more ships.'

@@ -13,6 +13,8 @@ document.body.addEventListener('click', (e) => {
 
     player1 = new Player(elements.playerInput.value, 'real', 1)
     player2 = new Player('computer', 'computer', 2)
+    player1.board.placeRandomShips()
+    player2.board.placeRandomShips()
 
     player1Render = new Render(player1)
     player2Render = new Render(player2)
@@ -21,5 +23,7 @@ document.body.addEventListener('click', (e) => {
 
     player1Render.renderName()
     player2Render.renderName()
+    player1Render.renderBoard()
+    player2Render.renderBoard()
   }
 })
