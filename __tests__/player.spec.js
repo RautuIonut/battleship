@@ -39,7 +39,7 @@ test('Pleyer cant place more then 5 ships', () => {
   player1.board.placeShip(8, 4)
   player1.board.placeShip(1, 6)
   player1.board.placeShip(3, 9)
-  player1.board.placeShip(0, 6)
+  player1.board.placeShip(9, 9)
 
   expect(player1.board.placeShip(7, 7)).toBe('You can\'t place more ships.')
 })
@@ -49,7 +49,7 @@ test('Player stores ships', () => {
 
   player1.board.placeShip(1, 6)
   player1.board.placeShip(3, 9)
-  player1.board.placeShip(0, 6)
+  player1.board.placeShip(7, 5)
 
   expect(player1.board.getShips()).toBe(3)
 })
