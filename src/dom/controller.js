@@ -32,12 +32,22 @@ document.body.addEventListener('click', (e) => {
   }
 
   if (e.target.closest('.player2-board')) {
-    if (turn !== player1) return
+    if (turn === player1) {
 
-    player2.board.recieveAttack(
-      Number(e.target.classList[1]),
-      e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1]))
+      player2.board.recieveAttack(
+        Number(e.target.classList[1]),
+        e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1]))
 
-    player2Render.renderBoard()
+      player2Render.renderBoard()
+      turn = player2
+    }
+
+    player1.board.recieveAttack(
+       Math.floor(Math.random() * 9 + 1),
+       Math.floor(Math.random() * 9 + 1)
+    )
+
+    player1Render.renderBoard()
+    turn = player1
   }
 })
