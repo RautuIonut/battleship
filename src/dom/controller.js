@@ -2,11 +2,13 @@ import Player from '../logic/player.js'
 import elements from './elements.js'
 import Render from './render.js'
 
+let player1
+let player2
+let player1Render
+let player2Render
+let turn
+
 document.body.addEventListener('click', (e) => {
-  let player1
-  let player2
-  let player1Render
-  let player2Render
 
   if (e.target.classList.contains('start-btn')) {
     if (elements.playerInput.value === '') return
@@ -24,6 +26,18 @@ document.body.addEventListener('click', (e) => {
     player1Render.renderName()
     player2Render.renderName()
     player1Render.renderBoard()
+    player2Render.renderBoard()
+
+    turn = player1
+  }
+
+  if (e.target.closest('.player2-board')) {
+    if (turn !== player1) return
+
+    player2.board.recieveAttack(
+      Number(e.target.classList[1]),
+      e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1]))
+
     player2Render.renderBoard()
   }
 })

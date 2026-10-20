@@ -16,12 +16,12 @@ class Render {
 
   renderBoard() {
     const board = document.createElement('div')
-    board.classList.add('board')
+    board.classList.add(`player${this.player.number}-board`, 'board')
 
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         const tile = document.createElement('div')
-        tile.classList.add('tile', `${i}-${j}`)
+        tile.classList.add('tile', `${i}`, `${j}`)
 
         if (this.player.number === 1) {
           switch (this.player.board.getTile(i, j)) {
@@ -56,6 +56,11 @@ class Render {
         board.append(tile)
       }
     }
+
+    if (this.#container.querySelector('.board')) {
+      this.#container.querySelector('.board').remove()
+    }
+
     this.#container.append(board)
   }
 }
