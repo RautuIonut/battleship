@@ -92,8 +92,8 @@ class Gameboard {
   placeRandomShips() {
     while (this.#ships.length < 5) {
       this.placeShip(
-        Math.floor(Math.random() * 10 + 1),
-        Math.floor(Math.random() * 10 + 1)
+        Math.floor(Math.random() * 9 + 1),
+        Math.floor(Math.random() * 9 + 1)
       )
     }
   }
