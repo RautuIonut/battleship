@@ -46,10 +46,12 @@ class Render {
           switch (this.player.board.getTile(i, j)) {
             case 'X':
               tile.textContent = 'X'
+              tile.classList.add('checked')
               break
 
             case '|':
               tile.textContent = '|'
+              tile.classList.add('checked')
           }
         }
 

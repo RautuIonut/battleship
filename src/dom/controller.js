@@ -31,7 +31,10 @@ document.body.addEventListener('click', (e) => {
     turn = player1
   }
 
-  if (e.target.closest('.player2-board')) {
+  if (e.target.classList.contains('tile')) {
+    if (e.target.classList.contains('checked')) return
+    if (e.target.closest('.player1-board')) return
+
     if (turn === player1) {
 
       player2.board.recieveAttack(
