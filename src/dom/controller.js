@@ -40,6 +40,11 @@ document.body.addEventListener('click', (e) => {
 
     player2Render.renderBoard()
 
+    if (player2.board.getReport()) {
+      player1Render.renderWin()
+      return
+    }
+
     let result
     do {
       result = player1.board.recieveAttack(
@@ -49,5 +54,10 @@ document.body.addEventListener('click', (e) => {
     } while (result === 'wrong')
 
     player1Render.renderBoard()
+
+    if (player1.board.getReport()) {
+      player2Render.renderWin()
+      return
+    }
   }
 })
