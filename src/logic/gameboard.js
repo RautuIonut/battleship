@@ -38,7 +38,7 @@ class Gameboard {
     const ship = new Ship(Math.floor((Math.random() * 4) + 2), x, y)
 
     for (let i = 0; i < ship.length; i++) {
-      if (this.#tiles[x][y - i] !== 0 || y - i > 0 && this.#tiles[x][y - i - 1] !== 0) {
+      if (this.#tiles[x][y - i] !== 0 && (y - i > 0 && this.#tiles[x][y - i - 1] !== 0)) {
         return 'You can\'t place a ship there.'
       }
 
