@@ -1,3 +1,5 @@
+import elements from './elements.js'
+
 class Render {
   #container
 
@@ -25,13 +27,6 @@ class Render {
 
         if (this.player.number === 1) {
           switch (this.player.board.getTile(i, j)) {
-            case 1:
-              tile.textContent = '0'
-              break
-
-            case 0:
-              tile.textContent = ''
-              break
 
             case 'X':
               tile.textContent = 'X'
@@ -56,6 +51,7 @@ class Render {
         }
 
         board.append(tile)
+        console.log(this.player.name)
       }
     }
 
@@ -64,6 +60,11 @@ class Render {
     }
 
     this.#container.append(board)
+  }
+
+  renderWin() {
+    elements.winScreen.textContent = `${this.player.name} won`
+    elements.winScreen.classList = `win-screen, ${this.player.name}-win`
   }
 }
 

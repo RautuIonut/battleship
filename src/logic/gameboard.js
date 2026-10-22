@@ -18,6 +18,8 @@ class Gameboard {
 
   #missed = 0
 
+  lost
+
   #removeShip(x, y) {
     if (this.getShip(x, y).isSunk()) {
       this.#ships.splice(this.getShipId(x, y), 1)
@@ -79,18 +81,25 @@ class Gameboard {
       case 0:
         this.#tiles[x][y] = '|'
         this.#missed++
+        console.log(this.#tiles[x][y])
         return 'miss'
 
       case 1:
         this.#tiles[x][y] = 'X'
         this.getShip(x, y).hit()
         this.#removeShip(x, y)
+        console.log(this.#tiles[x][y])
         return 'hit'
     }
+
+    return 'wrong'
   }
 
   getReport() {
-    return this.#ships.length === 0
+    if (this.#ships.length === 0) {
+      this.lost = true
+      return true
+    }
   }
 
   placeRandomShips() {

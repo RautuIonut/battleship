@@ -6,7 +6,6 @@ let player1
 let player2
 let player1Render
 let player2Render
-let turn
 
 document.body.addEventListener('click', (e) => {
 
@@ -27,30 +26,28 @@ document.body.addEventListener('click', (e) => {
     player2Render.renderName()
     player1Render.renderBoard()
     player2Render.renderBoard()
-
-    turn = player1
   }
 
   if (e.target.classList.contains('tile')) {
     if (e.target.classList.contains('checked')) return
     if (e.target.closest('.player1-board')) return
+    if (player1.board.lost || player2.board.lost) return
 
-    if (turn === player1) {
-
-      player2.board.recieveAttack(
-        Number(e.target.classList[1]),
-        e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1]))
-
-      player2Render.renderBoard()
-      turn = player2
-    }
-
-    player1.board.recieveAttack(
-       Math.floor(Math.random() * 9 + 1),
-       Math.floor(Math.random() * 9 + 1)
+    player2.board.recieveAttack(
+      Number(e.target.classList[1]),
+      e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
     )
 
+    player2Render.renderBoard()
+
+    let result
+    do {
+      result = player1.board.recieveAttack(
+        Math.floor(Math.random() * 10),
+        Math.floor(Math.random() * 10)
+      )
+    } while (result === 'wrong')
+
     player1Render.renderBoard()
-    turn = player1
   }
 })
