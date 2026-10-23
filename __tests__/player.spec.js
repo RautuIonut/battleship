@@ -62,7 +62,7 @@ test('Player can recieve an attack', () => {
   player1.board.placeShip(1, 6)
 
   expect(player1.board.recieveAttack(3, 8)).toBe('hit')
-  expect(player1.board.recieveAttack(3, 8)).toBeUndefined()
+  expect(player1.board.recieveAttack(3, 8)).toBe('wrong')
   expect(player1.board.recieveAttack(7, 5)).toBe('miss')
 })
 

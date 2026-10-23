@@ -61,7 +61,7 @@ test('recieveAttack works', () => {
 
   expect(board.recieveAttack(5, 6)).toBe('miss')
   expect(board.recieveAttack(8, 3)).toBe('hit')
-  expect(board.recieveAttack(8, 3)).toBeUndefined()
+  expect(board.recieveAttack(8, 3)).toBe('wrong')
   expect(board.getShip(8, 4).isSunk()).toBe(false)
 })
 
