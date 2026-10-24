@@ -48,7 +48,8 @@ class Gameboard {
 
         if (
           this.#tiles[x][currentY] !== 0 ||
-          (currentY > 0 && this.#tiles[x][currentY - 1] !== 0)
+          (currentY > 0 && this.#tiles[x][currentY - 1] !== 0) ||
+          (currentY < 9 && this.#tiles[x][currentY + 1] !== 0)
         ) {
           return 'You can\'t place a ship there.'
         }
