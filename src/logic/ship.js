@@ -1,6 +1,7 @@
 class Ship {
-  constructor(length, x, y) {
+  constructor(length, type,  x, y) {
     this.length = length
+    this.type = type
     this.x = x
     this.y = y
   }

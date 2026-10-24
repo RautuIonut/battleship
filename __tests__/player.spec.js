@@ -26,10 +26,10 @@ test('Player can place ships', () => {
 test('Player cant place ships out of bound', () => {
   const player1 = new Player('John', 'real')
 
-  player1.board.placeShip(8, 4)
+  player1.board.placeShip(8, 4, 'horizontal')
 
-  expect(player1.board.placeShip(4, 0)).toBe('You can\'t place a ship there.')
-  expect(player1.board.placeShip(8, 5)).toBe('You can\'t place a ship there.')
+  expect(player1.board.placeShip(4, 0, 'horizontal')).toBe('You can\'t place a ship there.')
+  expect(player1.board.placeShip(8, 5, 'horizontal')).toBe('You can\'t place a ship there.')
 })
 
 test('Pleyer cant place more then 5 ships', () => {
@@ -57,9 +57,9 @@ test('Player stores ships', () => {
 test('Player can recieve an attack', () => {
   const player1 = new Player('John', 'real')
 
-  player1.board.placeShip(3, 9)
-  player1.board.placeShip(0, 6)
-  player1.board.placeShip(1, 6)
+  player1.board.placeShip(3, 9, 'horizontal')
+  player1.board.placeShip(0, 6, 'horizontal')
+  player1.board.placeShip(1, 6, 'horizontal')
 
   expect(player1.board.recieveAttack(3, 8)).toBe('hit')
   expect(player1.board.recieveAttack(3, 8)).toBe('wrong')
@@ -69,7 +69,7 @@ test('Player can recieve an attack', () => {
 test('Player loses when all ships are destoried', () => {
   const player1 = new Player('John', 'real')
 
-  player1.board.placeShip(3, 9)
+  player1.board.placeShip(3, 9, 'horizontal')
 
   expect(player1.checkLose()).toBe(false)
 
