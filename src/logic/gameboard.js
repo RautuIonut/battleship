@@ -30,13 +30,13 @@ class Gameboard {
     return this.#tiles[x][y]
   }
 
-  placeShip(x, y, type) {
+  placeShip(x, y, type, length) {
     if (this.#ships.length >= 5) {
       return 'You can\'t place more ships.'
     }
 
     const ship = new Ship(
-      Math.floor((Math.random() * 4) + 2),
+      length,
       type,
       x,
       y
@@ -161,6 +161,7 @@ class Gameboard {
 
     while (this.#ships.length < 5) {
       this.placeShip(
+        Math.floor((Math.random() * 4) + 2),
         Math.floor(Math.random() * 9 + 1),
         Math.floor(Math.random() * 9 + 1),
         types[Math.floor(Math.random() * (1 - 0 + 1)) + 0]

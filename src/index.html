@@ -6,11 +6,21 @@
   <title></title>
 </head>
 <body>
-  <div class="start-screen">
+  <div class='start-screen'>
+    <h1>Battleship</h1>
     <input type="text" class="player-input"></input>
-    <button class="start-btn">Start</button>
+    <button class='play-button'>Play</button>
   </div>
-  <div class="game-display">
+  <div class="prepare-screen hidden">
+    <button class="start-btn">Start</button>
+    <div class="player1-display"></div>
+    <button class="type-select">Horizontal</button>
+    <button class="2 ship-length-select selected-length">2</button>
+    <button class="3 ship-length-select">3</button>
+    <button class="4 ship-length-select">4</button>
+    <button class="5 ship-length-select">5</button>
+  </div>
+  <div class="game-display hidden">
     <p class='win-screen'></p>
     <div class="player1-display"></div>
     <div class="player2-display"></div>

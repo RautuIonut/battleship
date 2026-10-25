@@ -51,7 +51,6 @@ class Render {
         }
 
         board.append(tile)
-        console.log(this.player.name)
       }
     }
 
@@ -60,6 +59,31 @@ class Render {
     }
 
     this.#container.append(board)
+  }
+
+  renderPrepare() {
+    const container = elements.prepareScreen.querySelector('.player1-display')
+    const board = document.createElement('div')
+    board.classList.add('player-prepare', 'board')
+
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        const tile = document.createElement('div')
+        tile.classList.add('tile', `${i}`, `${j}`)
+
+        if (this.player.board.getTile(i, j) === 1) {
+          tile.textContent = 'X'
+        }
+
+        board.append(tile)
+      }
+    }
+
+    if (container.querySelector('.player-prepare')) {
+      container.querySelector('.board').remove()
+    }
+
+    container.append(board)
   }
 
   renderWin() {

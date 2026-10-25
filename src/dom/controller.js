@@ -9,10 +9,34 @@ let player2Render
 
 document.body.addEventListener('click', (e) => {
 
-  if (e.target.classList.contains('start-btn')) {
+  if (e.target.classList.contains('play-button')) {
     if (elements.playerInput.value === '') return
 
     player1 = new Player(elements.playerInput.value, 'real', 1)
+    player1Render = new Render(player1)
+
+    elements.startScreen.classList.toggle('hidden')
+    elements.prepareScreen.classList.toggle('hidden')
+
+    player1Render.renderPrepare()
+  }
+
+  if (e.target.classList.contains('tile')) {
+    if (!e.target.closest('.player-prepare')) return
+    if (e.target.classList.contains('checked')) return
+
+    const x = Number(e.target.classList[1])
+    const y = e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
+    const type = elements.typeSelect.textContent === 'Horizontal' ? 'horizontal' : 'vertical'
+    const length = document.querySelector('.selected-length').classList[0]
+
+
+    player1.board.placeShip(x, y, type, length)
+    player1Render.renderPrepare()
+  }
+
+  if (e.target.classList.contains('start-btn')) {
+
     player2 = new Player('computer', 'computer', 2)
     player1.board.placeRandomShips()
     player2.board.placeRandomShips()
@@ -29,6 +53,7 @@ document.body.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('tile')) {
+    if (e.target.closest('.player-prepare')) return
     if (e.target.classList.contains('checked')) return
     if (e.target.closest('.player1-board')) return
     if (player1.board.lost || player2.board.lost) return
@@ -59,5 +84,18 @@ document.body.addEventListener('click', (e) => {
       player2Render.renderWin()
       return
     }
+  }
+
+  if (e.target.classList.contains('type-select')) {
+    if (e.target.textContent === 'Horizontal') {
+      e.target.textContent = 'Vertical'
+    } else {
+      e.target.textContent = 'Horizontal'
+    }
+  }
+
+  if (e.target.classList.contains('ship-length-select')) {
+    e.target.classList.add('selected-length')
+    document.querySelector('.selected-length').classList.remove('selected-length')
   }
 })
