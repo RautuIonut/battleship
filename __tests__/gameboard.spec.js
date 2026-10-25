@@ -94,7 +94,7 @@ test('Sunken ships get romoved', () => {
   board.recieveAttack(4, 7)
   board.recieveAttack(5, 7)
   board.recieveAttack(6, 7)
-  board.recieveAttack(3, 7)
+  board.recieveAttack(7, 7)
 
   expect(board.getShips()).toBe(1)
 })
