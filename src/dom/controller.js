@@ -10,7 +10,10 @@ let player2Render
 document.body.addEventListener('click', (e) => {
 
   if (e.target.classList.contains('play-button')) {
-    if (elements.playerInput.value === '') return
+    if (elements.playerInput.value === '') {
+      elements.startScreenError.textContent = 'You need to choose a name!'
+      return
+    }
 
     player1 = new Player(elements.playerInput.value, 'real', 1)
     player1Render = new Render(player1)
