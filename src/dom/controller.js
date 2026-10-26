@@ -28,7 +28,7 @@ document.body.addEventListener('click', (e) => {
     const x = Number(e.target.classList[1])
     const y = e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
     const type = elements.typeSelect.textContent === 'Horizontal' ? 'horizontal' : 'vertical'
-    const length = document.querySelector('.selected-length').classList[0]
+    const length = Number(document.querySelector('.selected-length').classList[0])
 
 
     player1.board.placeShip(x, y, type, length)
@@ -95,7 +95,7 @@ document.body.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('ship-length-select')) {
-    e.target.classList.add('selected-length')
     document.querySelector('.selected-length').classList.remove('selected-length')
+    e.target.classList.add('selected-length')
   }
 })

@@ -18,6 +18,8 @@ class Gameboard {
 
   #missed = 0
 
+  #lengths = [2, 3, 3, 4, 5]
+
   lost
 
   #removeShip(x, y) {
@@ -33,6 +35,10 @@ class Gameboard {
   placeShip(x, y, type, length) {
     if (this.#ships.length >= 5) {
       return 'You can\'t place more ships.'
+    }
+
+    if (!this.#lengths.includes(length)) {
+      return 'You can\'t place more ships of this kind.'
     }
 
     const ship = new Ship(
@@ -95,6 +101,7 @@ class Gameboard {
     }
 
     this.#ships.push(ship)
+    this.#lengths.splice(this.#lengths.indexOf(length), 1)
   }
 
   getShips() {
@@ -161,10 +168,10 @@ class Gameboard {
 
     while (this.#ships.length < 5) {
       this.placeShip(
-        Math.floor((Math.random() * 4) + 2),
         Math.floor(Math.random() * 9 + 1),
         Math.floor(Math.random() * 9 + 1),
-        types[Math.floor(Math.random() * (1 - 0 + 1)) + 0]
+        types[Math.floor(Math.random() * (1 - 0 + 1)) + 0],
+        Math.floor((Math.random() * 4) + 2)
       )
     }
   }
