@@ -69,6 +69,7 @@ document.body.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('start-btn')) {
+    if (player1.board.getShips() < 5) return 'You have to place all your ships'
     elements.prepareScreen.classList.toggle('hidden')
 
     player2 = new Player('computer', 'computer', 2)
