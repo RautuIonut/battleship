@@ -27,6 +27,9 @@ class Render {
 
         if (this.player.number === 1) {
           switch (this.player.board.getTile(i, j)) {
+            case 1:
+              tile.textContent = '1'
+              break
 
             case 'X':
               tile.textContent = 'X'
@@ -62,7 +65,7 @@ class Render {
   }
 
   renderPrepare() {
-    const container = elements.prepareScreen.querySelector('.player1-display')
+    const container = elements.prepareScreen.querySelector('.player-prepare-display')
     const board = document.createElement('div')
     board.classList.add('player-prepare', 'board')
 
@@ -72,7 +75,7 @@ class Render {
         tile.classList.add('tile', `${i}`, `${j}`)
 
         if (this.player.board.getTile(i, j) === 1) {
-          tile.textContent = 'X'
+          tile.textContent = '1'
         }
 
         board.append(tile)

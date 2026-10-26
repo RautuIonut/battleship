@@ -21,39 +21,7 @@ document.body.addEventListener('click', (e) => {
     player1Render.renderPrepare()
   }
 
-  if (e.target.classList.contains('tile')) {
-    if (!e.target.closest('.player-prepare')) return
-    if (e.target.classList.contains('checked')) return
-
-    const x = Number(e.target.classList[1])
-    const y = e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
-    const type = elements.typeSelect.textContent === 'Horizontal' ? 'horizontal' : 'vertical'
-    const length = Number(document.querySelector('.selected-length').classList[0])
-
-
-    player1.board.placeShip(x, y, type, length)
-    player1Render.renderPrepare()
-  }
-
-  if (e.target.classList.contains('start-btn')) {
-
-    player2 = new Player('computer', 'computer', 2)
-    player1.board.placeRandomShips()
-    player2.board.placeRandomShips()
-
-    player1Render = new Render(player1)
-    player2Render = new Render(player2)
-
-    elements.startScreen.classList.toggle('hidden')
-
-    player1Render.renderName()
-    player2Render.renderName()
-    player1Render.renderBoard()
-    player2Render.renderBoard()
-  }
-
-  if (e.target.classList.contains('tile')) {
-    if (e.target.closest('.player-prepare')) return
+  if (e.target.classList.contains('tile') && !e.target.closest('.player-prepare')) {
     if (e.target.classList.contains('checked')) return
     if (e.target.closest('.player1-board')) return
     if (player1.board.lost || player2.board.lost) return
@@ -84,6 +52,34 @@ document.body.addEventListener('click', (e) => {
       player2Render.renderWin()
       return
     }
+  }
+
+  if (e.target.classList.contains('tile')) {
+    if (!e.target.closest('.player-prepare')) return
+    if (e.target.classList.contains('checked')) return
+
+    const x = Number(e.target.classList[1])
+    const y = e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
+    const type = elements.typeSelect.textContent === 'Horizontal' ? 'horizontal' : 'vertical'
+    const length = Number(document.querySelector('.selected-length').classList[0])
+
+
+    player1.board.placeShip(x, y, type, length)
+    player1Render.renderPrepare()
+  }
+
+  if (e.target.classList.contains('start-btn')) {
+    elements.prepareScreen.classList.toggle('hidden')
+
+    player2 = new Player('computer', 'computer', 2)
+    player2.board.placeRandomShips()
+
+    player2Render = new Render(player2)
+
+    player1Render.renderName()
+    player2Render.renderName()
+    player1Render.renderBoard()
+    player2Render.renderBoard()
   }
 
   if (e.target.classList.contains('type-select')) {
