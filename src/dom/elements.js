@@ -4,7 +4,8 @@ const elements = {
   winScreen: document.querySelector('.win-screen'),
   prepareScreen: document.querySelector('.prepare-screen'),
   typeSelect: document.querySelector('.type-select'),
-  startScreenError: document.querySelector('.start-error')
+  startScreenError: document.querySelector('.start-error'),
+  prepareScreenError: document.querySelector('.prepare-error')
 }
 
 export default elements

@@ -71,10 +71,16 @@ document.body.addEventListener('click', (e) => {
     }
 
     player1Render.renderPrepare()
+
+    elements.prepareScreenError.textContent = ''
   }
 
   if (e.target.classList.contains('start-btn')) {
-    if (player1.board.getShips() < 5) return 'You have to place all your ships'
+    if (player1.board.getShips() < 5) {
+      elements.prepareScreenError.textContent = 'You have to place all your ships!'
+      return
+    }
+
     elements.prepareScreen.classList.toggle('hidden')
 
     player2 = new Player('computer', 'computer', 2)

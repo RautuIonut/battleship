@@ -72,7 +72,8 @@ body {
   border-color: var(--blue-700);
 }
 
-.start-error {
+.start-error,
+.prepare-error {
   color: var(--red-600);
 }
 
