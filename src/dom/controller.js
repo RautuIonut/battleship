@@ -66,8 +66,10 @@ document.body.addEventListener('click', (e) => {
     const type = elements.typeSelect.textContent === 'Horizontal' ? 'horizontal' : 'vertical'
     const length = Number(document.querySelector('.selected-length').classList[0])
 
+    if (player1.board.placeShip(x, y, type, length) === undefined) {
+      document.querySelector('.selected-length').classList.add('used-length')
+    }
 
-    player1.board.placeShip(x, y, type, length)
     player1Render.renderPrepare()
   }
 

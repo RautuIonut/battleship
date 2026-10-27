@@ -5,7 +5,10 @@
   --red-200: #FF6B6B;
   --red-600: #E63946;
   --cyan-500: #48CAE4;
+  --cyan-600: #3ea7bc;
   --gray-50: #E6EDF5;
+  --green-500: #04f42c;
+  --green-600: #06d829;
 
   --border-radius: 5px;
 }
@@ -17,13 +20,13 @@ body {
 .start-screen {
   display: flex;
   flex-direction: column;
-  height: 80vh;
   justify-content: center;
+  height: 80vh;
   align-items: center;
   gap: 10px;
 }
 
-.start-screen > h1 {
+.title {
   color: var(--cyan-500);
   font-size: 3rem;
 }
@@ -41,7 +44,10 @@ body {
   border-color: var(--cyan-500);
 }
 
-.play-button {
+.play-button,
+.start-btn,
+.type-select,
+.length-options > button{
   background-color: var(--blue-800);
   border: 1px solid var(--blue-700);
   border-radius: var(--border-radius);
@@ -50,12 +56,18 @@ body {
   cursor: pointer;
 }
 
-.play-button:hover {
+.play-button:hover,
+.start-btn:hover,
+.type-select:hover,
+.length-options > button:hover {
   background-color: var(--blue-700);
   border-color: var(--blue-800);
 }
 
-.play-button:active {
+.play-button:active,
+.start-btn:active,
+.type-select:active,
+.length-options > button:active {
   background-color: var(--blue-800);
   border-color: var(--blue-700);
 }
@@ -64,19 +76,96 @@ body {
   color: var(--red-600);
 }
 
+.prepare-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.prepare-controller {
+  display: flex;
+  gap: 10px;
+}
+
+.prepare-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid var(--blue-700);
+  height: fit-content;
+  padding: 0.6rem;
+  border-radius: var(--border-radius);
+}
+
 .hidden {
   display: none;
 }
 
 .tile {
-  border: 1px solid black;
   width: 50px;
+  background-color: var(--blue-800);
   height: 50px;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile:hover:not(.checked) {
+  background-color: var(--blue-700);
+  cursor: pointer;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(10, 50px)
+  grid-template-columns: repeat(10, 50px);
+  gap: 4px;
+}
+
+.ship {
+  background-color: var(--gray-50);
+  position: relative;
+}
+
+.ship > p,
+.miss > p {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.miss > p {
+  font-size: 2rem;
+  bottom: 20%;
+}
+
+.miss {
+  background-color: var(--cyan-500);
+  position: relative;
+}
+
+.length-options > .selected-length {
+  background-color: var(--cyan-500);
+}
+
+.length-options > .selected-length:hover {
+  background-color: var(--cyan-600);
+}
+
+.length-options > .used-length {
+  background-color: var(--green-500);
+}
+
+.length-options > .used-length:hover {
+  background-color: var(--green-600);
+}
+
+.hit {
+  background-color: var(--red-600);
+  position: relative;
+  color: var(--gray-50);
 }
 
 .game-display {

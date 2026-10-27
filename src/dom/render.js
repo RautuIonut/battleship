@@ -28,27 +28,32 @@ class Render {
         if (this.player.number === 1) {
           switch (this.player.board.getTile(i, j)) {
             case 1:
-              tile.textContent = '1'
+              tile.innerHTML = '<p>o</p>'
+              tile.classList.add('ship')
               break
 
             case 'X':
-              tile.textContent = 'X'
+              tile.innerHTML = '<p>x</p>'
+              tile.classList.add('hit')
               break
 
             case '|':
-              tile.textContent = '|'
+              tile.innerHTML = '<p>.</p>'
+              tile.classList.add('miss')
           }
         }
 
         if (this.player.number === 2) {
           switch (this.player.board.getTile(i, j)) {
             case 'X':
-              tile.textContent = 'X'
+              tile.innerHTML = '<p>x</p>'
+              tile.classList.add('hit')
               tile.classList.add('checked')
               break
 
             case '|':
-              tile.textContent = '|'
+              tile.innerHTML = '<p>.</p>'
+              tile.classList.add('miss')
               tile.classList.add('checked')
           }
         }
@@ -75,7 +80,9 @@ class Render {
         tile.classList.add('tile', `${i}`, `${j}`)
 
         if (this.player.board.getTile(i, j) === 1) {
-          tile.textContent = '1'
+          tile.innerHTML = '<p>o</p>'
+          tile.classList.add('checked')
+          tile.classList.add('ship')
         }
 
         board.append(tile)
