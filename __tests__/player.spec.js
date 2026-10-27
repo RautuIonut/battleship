@@ -28,8 +28,12 @@ test('Player cant place ships out of bound', () => {
 
   player1.board.placeShip(8, 4, 'horizontal', 2)
 
-  expect(player1.board.placeShip(4, 0, 'horizontal', 3)).toBe('You can\'t place a ship there.')
-  expect(player1.board.placeShip(8, 5, 'horizontal', 3)).toBe('You can\'t place a ship there.')
+  expect(player1.board.placeShip(4, 0, 'horizontal', 3)).toBe(
+    "You can't place a ship there."
+  )
+  expect(player1.board.placeShip(8, 5, 'horizontal', 3)).toBe(
+    "You can't place a ship there."
+  )
 })
 
 test('Pleyer cant place more then 5 ships', () => {
@@ -41,7 +45,7 @@ test('Pleyer cant place more then 5 ships', () => {
   player1.board.placeShip(3, 9, 'horizontal', 4)
   player1.board.placeShip(9, 9, 'horizontal', 5)
 
-  expect(player1.board.placeShip(7, 7)).toBe('You can\'t place more ships.')
+  expect(player1.board.placeShip(7, 7)).toBe("You can't place more ships.")
 })
 
 test('Player stores ships', () => {

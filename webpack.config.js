@@ -11,28 +11,28 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    clean: true,
+    clean: true
   },
   devtool: 'eval-source-map',
   devServer: {
     watchFiles: ['./src/index.js'],
-    open: true,
+    open: true
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    }),
+    })
   ],
   module: {
     rules: [
       {
         test: '/\.css$/i',
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: '/\.woff2$/i',
         use: 'asset/resource'
-      },
-    ],
-  },
+      }
+    ]
+  }
 }

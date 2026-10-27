@@ -1,52 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-</head>
-<body>
-  <div class='start-screen'>
-    <h1 class="title">Battleship</h1>
-    <input type="text" class="player-input"></input>
-    <button class='play-button'>Play</button>
-    <p class="start-error"></p>
-  </div>
-  <div class="prepare-screen hidden">
-    <h1 class="title">Battleship</h1>
-    <div class="prepare-controller">
-      <div class="player-prepare-display"></div>
-      <div class="prepare-options">
-        <button class="type-select">Horizontal</button>
-        <div class="length-options">
-          <button class="2 ship-length-select selected-length">2</button>
-          <button class="3 ship-length-select">3</button>
-          <button class="3 ship-length-select">3</button>
-          <button class="4 ship-length-select">4</button>
-          <button class="5 ship-length-select">5</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div class="start-screen">
+      <h1 class="title">Battleship</h1>
+      <input type="text" class="player-input" />
+      <button class="play-button">Play</button>
+      <p class="start-error"></p>
+    </div>
+    <div class="prepare-screen hidden">
+      <h1 class="title">Battleship</h1>
+      <div class="prepare-controller">
+        <div class="player-prepare-display"></div>
+        <div class="prepare-options">
+          <button class="type-select">Horizontal</button>
+          <div class="length-options">
+            <button class="2 ship-length-select selected-length">2</button>
+            <button class="3 ship-length-select">3</button>
+            <button class="3 ship-length-select">3</button>
+            <button class="4 ship-length-select">4</button>
+            <button class="5 ship-length-select">5</button>
+          </div>
+        </div>
+      </div>
+      <button class="start-btn">Start</button>
+      <p class="prepare-error"></p>
+    </div>
+    <div class="game-display hidden">
+      <h1 class="title">Battleship</h1>
+      <p class="win-screen"></p>
+      <div class="players-display">
+        <div class="player1-display">
+          <div class="player-info">
+            <div class="player-name"></div>
+            <div class="fleet-info">Ships deployed <span></span></div>
+          </div>
+        </div>
+        <div class="player2-display">
+          <div class="player-info">
+            <div class="player-name"></div>
+            <div class="fleet-info">Ships remaining <span></span></div>
+          </div>
         </div>
       </div>
     </div>
-    <button class="start-btn">Start</button>
-    <p class="prepare-error"></p>
-  </div>
-  <div class="game-display hidden">
-    <h1 class="title">Battleship</h1>
-    <p class='win-screen'></p>
-    <div class="players-display">
-      <div class="player1-display">
-        <div class="player-info">
-          <div class="player-name"></div>
-          <div class="fleet-info">Ships deployed <span></span></div>
-        </div>
-      </div>
-      <div class="player2-display">
-        <div class="player-info">
-          <div class="player-name"></div>
-          <div class="fleet-info">Ships remaining <span></span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

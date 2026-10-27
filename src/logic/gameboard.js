@@ -34,19 +34,14 @@ class Gameboard {
 
   placeShip(x, y, type, length) {
     if (this.#ships.length >= 5) {
-      return 'You can\'t place more ships.'
+      return "You can't place more ships."
     }
 
     if (!this.#lengths.includes(length)) {
-      return 'You can\'t place more ships of this kind.'
+      return "You can't place more ships of this kind."
     }
 
-    const ship = new Ship(
-      length,
-      type,
-      x,
-      y
-    )
+    const ship = new Ship(length, type, x, y)
 
     if (type === 'horizontal') {
       for (let i = 0; i < ship.length; i++) {
@@ -57,47 +52,46 @@ class Gameboard {
           (currentY > 0 && this.#tiles[x][currentY - 1] !== 0) ||
           (currentY < 9 && this.#tiles[x][currentY + 1] !== 0)
         ) {
-          return 'You can\'t place a ship there.'
+          return "You can't place a ship there."
         }
 
         if (
-          x > 0 && this.#tiles[x - 1][currentY] !== 0 ||
-          x < 9 && this.#tiles[x + 1][currentY] !== 0
+          (x > 0 && this.#tiles[x - 1][currentY] !== 0) ||
+          (x < 9 && this.#tiles[x + 1][currentY] !== 0)
         ) {
-          return 'You can\'t place a ship there.'
+          return "You can't place a ship there."
         }
       }
 
       for (let i = 0; i < ship.length; i++) {
         this.#tiles[x][y - i] = 1
       }
-
     } else if (type === 'vertical') {
-        for (let i = 0; i < ship.length; i++) {
-          const currentX = x + i
+      for (let i = 0; i < ship.length; i++) {
+        const currentX = x + i
 
-          if (currentX > 9) {
-            return 'You can\'t place a ship there.'
-          }
-
-          if (
-            this.#tiles[currentX][y] !== 0 ||
-            (currentX < 9 && this.#tiles[currentX + 1][y] !== 0)
-          ) {
-            return 'You can\'t place a ship there.'
-          }
-
-          if (
-            y > 0 && this.#tiles[currentX][y - 1] !== 0 ||
-            y < 9 && this.#tiles[currentX][y + 1] !== 0
-          ) {
-            return 'You can\'t place a ship there.'
-          }
+        if (currentX > 9) {
+          return "You can't place a ship there."
         }
 
-        for (let i = 0; i < ship.length; i++) {
-          this.#tiles[x + i][y] = 1
+        if (
+          this.#tiles[currentX][y] !== 0 ||
+          (currentX < 9 && this.#tiles[currentX + 1][y] !== 0)
+        ) {
+          return "You can't place a ship there."
         }
+
+        if (
+          (y > 0 && this.#tiles[currentX][y - 1] !== 0) ||
+          (y < 9 && this.#tiles[currentX][y + 1] !== 0)
+        ) {
+          return "You can't place a ship there."
+        }
+      }
+
+      for (let i = 0; i < ship.length; i++) {
+        this.#tiles[x + i][y] = 1
+      }
     }
 
     this.#ships.push(ship)
@@ -112,19 +106,13 @@ class Gameboard {
     for (let ship of this.#ships) {
       switch (ship.type) {
         case 'horizontal':
-          if (
-            ship.x === x &&
-            y > ship.y - ship.length &&
-            y <= ship.y
-          ) return this.#ships.indexOf(ship)
+          if (ship.x === x && y > ship.y - ship.length && y <= ship.y)
+            return this.#ships.indexOf(ship)
           break
 
         case 'vertical':
-          if (
-            ship.y === y &&
-            x < ship.x + ship.length &&
-            x >= ship.x
-          ) return this.#ships.indexOf(ship)
+          if (ship.y === y && x < ship.x + ship.length && x >= ship.x)
+            return this.#ships.indexOf(ship)
       }
     }
   }
@@ -171,7 +159,7 @@ class Gameboard {
         Math.floor(Math.random() * 9 + 1),
         Math.floor(Math.random() * 9 + 1),
         types[Math.floor(Math.random() * (1 - 0 + 1)) + 0],
-        Math.floor((Math.random() * 4) + 2)
+        Math.floor(Math.random() * 4 + 2)
       )
     }
   }

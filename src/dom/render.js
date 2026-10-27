@@ -5,7 +5,9 @@ class Render {
 
   constructor(player) {
     this.player = player
-    this.#container = document.body.querySelector(`.player${this.player.number}-display`)
+    this.#container = document.body.querySelector(
+      `.player${this.player.number}-display`
+    )
   }
 
   renderName() {
@@ -13,7 +15,8 @@ class Render {
   }
 
   renderShipNumber() {
-    this.#container.querySelector('.fleet-info > span').textContent = this.player.board.getShips()
+    this.#container.querySelector('.fleet-info > span').textContent =
+      this.player.board.getShips()
   }
 
   renderBoard() {
@@ -70,7 +73,9 @@ class Render {
   }
 
   renderPrepare() {
-    const container = elements.prepareScreen.querySelector('.player-prepare-display')
+    const container = elements.prepareScreen.querySelector(
+      '.player-prepare-display'
+    )
     const board = document.createElement('div')
     board.classList.add('player-prepare', 'board')
 

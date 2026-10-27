@@ -7,8 +7,7 @@ let player2
 let player1Render
 let player2Render
 
-document.body.addEventListener('click', (e) => {
-
+document.body.addEventListener('click', e => {
   if (e.target.classList.contains('play-button')) {
     if (elements.playerInput.value === '') {
       elements.startScreenError.textContent = 'You need to choose a name!'
@@ -24,14 +23,19 @@ document.body.addEventListener('click', (e) => {
     player1Render.renderPrepare()
   }
 
-  if (e.target.classList.contains('tile') && !e.target.closest('.player-prepare')) {
+  if (
+    e.target.classList.contains('tile') &&
+    !e.target.closest('.player-prepare')
+  ) {
     if (e.target.classList.contains('checked')) return
     if (e.target.closest('.player1-board')) return
     if (player1.board.lost || player2.board.lost) return
 
     player2.board.recieveAttack(
       Number(e.target.classList[1]),
-      e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
+      e.target.classList[2]
+        ? Number(e.target.classList[2])
+        : Number(e.target.classList[1])
     )
 
     player2Render.renderBoard()
@@ -64,9 +68,16 @@ document.body.addEventListener('click', (e) => {
     if (e.target.classList.contains('checked')) return
 
     const x = Number(e.target.classList[1])
-    const y = e.target.classList[2] ? Number(e.target.classList[2]) : Number(e.target.classList[1])
-    const type = elements.typeSelect.textContent === 'Horizontal' ? 'horizontal' : 'vertical'
-    const length = Number(document.querySelector('.selected-length').classList[0])
+    const y = e.target.classList[2]
+      ? Number(e.target.classList[2])
+      : Number(e.target.classList[1])
+    const type =
+      elements.typeSelect.textContent === 'Horizontal'
+        ? 'horizontal'
+        : 'vertical'
+    const length = Number(
+      document.querySelector('.selected-length').classList[0]
+    )
 
     if (player1.board.placeShip(x, y, type, length) === undefined) {
       document.querySelector('.selected-length').classList.add('used-length')
@@ -79,7 +90,8 @@ document.body.addEventListener('click', (e) => {
 
   if (e.target.classList.contains('start-btn')) {
     if (player1.board.getShips() < 5) {
-      elements.prepareScreenError.textContent = 'You have to place all your ships!'
+      elements.prepareScreenError.textContent =
+        'You have to place all your ships!'
       return
     }
 
@@ -108,7 +120,9 @@ document.body.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('ship-length-select')) {
-    document.querySelector('.selected-length').classList.remove('selected-length')
+    document
+      .querySelector('.selected-length')
+      .classList.remove('selected-length')
     e.target.classList.add('selected-length')
   }
 })

@@ -18,7 +18,9 @@ test('Cant add more then 5 ships', () => {
   board.placeShip(2, 0, 'vertical', 4)
   board.placeShip(0, 9, 'vertical', 5)
 
-  expect(board.placeShip(3, 7, 'horizontal')).toBe('You can\'t place more ships.')
+  expect(board.placeShip(3, 7, 'horizontal')).toBe(
+    "You can't place more ships."
+  )
 })
 
 test('Cant place ships if there is no empty space', () => {
@@ -28,8 +30,12 @@ test('Cant place ships if there is no empty space', () => {
   board.placeShip(1, 6, 'horizontal', 3)
   board.placeShip(5, 9, 'vertical', 4)
 
-  expect(board.placeShip(0, 0, 'horizontal', 3)).toBe('You can\'t place a ship there.')
-  expect(board.placeShip(9, 7, 'vertical', 5)).toBe('You can\'t place a ship there.')
+  expect(board.placeShip(0, 0, 'horizontal', 3)).toBe(
+    "You can't place a ship there."
+  )
+  expect(board.placeShip(9, 7, 'vertical', 5)).toBe(
+    "You can't place a ship there."
+  )
   expect(board.getShips()).toBe(3)
 })
 
