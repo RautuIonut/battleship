@@ -47,7 +47,8 @@ body {
 .play-button,
 .start-btn,
 .type-select,
-.length-options > button{
+.length-options > button,
+.player-info {
   background-color: var(--blue-800);
   border: 1px solid var(--blue-700);
   border-radius: var(--border-radius);
@@ -100,7 +101,8 @@ body {
   border-radius: var(--border-radius);
 }
 
-.hidden {
+.hidden,
+.game-display.hidden {
   display: none;
 }
 
@@ -163,13 +165,60 @@ body {
   background-color: var(--green-600);
 }
 
+.game-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.players-display {
+  display: flex;
+  gap: 20px;
+}
+
+.player1-display,
+.player2-display {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .hit {
   background-color: var(--red-600);
   position: relative;
   color: var(--gray-50);
 }
 
-.game-display {
+.player-info {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fleet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.fleet-info > span,
+.player-name {
+  font-size: 1.5rem;
+}
+
+.player1-display span,
+.player1-display .player-name,
+.player1-win {
+  color: var(--cyan-500);
+}
+
+.player2-display span,
+.player2-display .player-name,
+.player2-win {
+  color: var(--red-600);
+}
+
+.win-screen {
+  font-size: 1.5rem;
 }

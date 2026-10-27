@@ -5,7 +5,8 @@ const elements = {
   prepareScreen: document.querySelector('.prepare-screen'),
   typeSelect: document.querySelector('.type-select'),
   startScreenError: document.querySelector('.start-error'),
-  prepareScreenError: document.querySelector('.prepare-error')
+  prepareScreenError: document.querySelector('.prepare-error'),
+  gameScreen: document.querySelector('.game-display')
 }
 
 export default elements

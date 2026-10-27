@@ -35,6 +35,7 @@ document.body.addEventListener('click', (e) => {
     )
 
     player2Render.renderBoard()
+    player2Render.renderShipNumber()
 
     if (player2.board.getReport()) {
       player1Render.renderWin()
@@ -50,6 +51,7 @@ document.body.addEventListener('click', (e) => {
     } while (result === 'wrong')
 
     player1Render.renderBoard()
+    player1Render.renderShipNumber()
 
     if (player1.board.getReport()) {
       player2Render.renderWin()
@@ -82,6 +84,7 @@ document.body.addEventListener('click', (e) => {
     }
 
     elements.prepareScreen.classList.toggle('hidden')
+    elements.gameScreen.classList.toggle('hidden')
 
     player2 = new Player('computer', 'computer', 2)
     player2.board.placeRandomShips()
@@ -90,6 +93,8 @@ document.body.addEventListener('click', (e) => {
 
     player1Render.renderName()
     player2Render.renderName()
+    player1Render.renderShipNumber()
+    player2Render.renderShipNumber()
     player1Render.renderBoard()
     player2Render.renderBoard()
   }

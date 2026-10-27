@@ -9,11 +9,11 @@ class Render {
   }
 
   renderName() {
-    const nameDisplay = document.createElement('p')
-    nameDisplay.textContent = `Player ${this.player.number}: ` +  this.player.name
-    nameDisplay.classList.add(`player${this.player.number}-name`)
+    this.#container.querySelector('.player-name').textContent = this.player.name
+  }
 
-    this.#container.append(nameDisplay)
+  renderShipNumber() {
+    this.#container.querySelector('.fleet-info > span').textContent = this.player.board.getShips()
   }
 
   renderBoard() {
@@ -98,7 +98,7 @@ class Render {
 
   renderWin() {
     elements.winScreen.textContent = `${this.player.name} won`
-    elements.winScreen.classList = `win-screen, ${this.player.name}-win`
+    elements.winScreen.classList.add(`player${this.player.number}-win`)
   }
 }
 
